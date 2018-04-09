@@ -1,10 +1,63 @@
+{% extends "models_index.html" %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Inspur社区-为您提供一切服务</h2>
+            <p>请选择产品</p>
+            <ul class="bs-docs-footer-links">
+                <li><a href="#">这个地方可以循环数据库中的产品版本</a></li>
+                <li>放图片，一行四个</li>
+                <li><a href="#">这个地方可以循环数据库中的产品版本</a></li>
+                <li>放图片，一行四个</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail" style="height: 336px">
+                    <a href="#">问题帮助</a>
+                    <div class="caption">
+                        <h3>
+                            <a href="#">456</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail" style="height: 336px">
+                    <a href="#">课程学习</a>
+                    <div class="caption">
+                        <h3>
+                            <a href="#">456</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail" style="height: 336px">
+                    <a href="#">论坛交流</a>
+                    <div class="caption">
+                        <h3>
+                            <a href="#">456</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail" style="height: 336px">
+                    <a href="#">官方支持</a>
+                    <div class="caption">
+                        <h3>
+                            <a href="#">456</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 </html>
