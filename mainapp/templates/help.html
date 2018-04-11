@@ -1,0 +1,93 @@
+{% extends "models_index.html" %}
+{% load staticfiles %}
+{% load mptt_tags %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% block js %}
+        <script type="text/javascript">
+            $(function(){
+                $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', '折叠此级');
+                $('.tree li.parent_li[ltype=month] > span, .tree li.parent_li[ltype=year]:gt(0) > span').each(function (e){
+                    var children = $(this).parent('li.parent_li').find(' > ul > li');
+                    children.hide('fast');
+                    $(this).attr('title', '展开此级').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
+                });
+                $('.tree li.parent_li > span').on('click', function (e) {
+                    var children = $(this).parent('li.parent_li').find(' > ul > li');
+                    if (children.is(":visible")) {
+                        children.hide('fast');
+                        $(this).attr('title', '展开此级').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
+                    } else {
+                        children.show('fast');
+                        $(this).attr('title', '折叠此级').find(' > i').addClass('glyphicon-minus-sign').removeClass('glyphicon-plus-sign');
+                    }
+                    e.stopPropagation();
+                });
+            });
+        </script>
+    {% endblock %}
+    <title>帮助</title>
+</head>
+<br>
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="">
+                </a>
+                <a class="navbar-brand" href="#">版本名称</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ><a href="{% url 'index' %}">首页 <span class="sr-only">(current)</span></a></li>
+                    <li ><a href="#">帮助 <span class="sr-only">(current)</span></a></li>
+                    <li ><a href="#">课程 <span class="sr-only">(current)</span></a></li>
+                    <li ><a href="#">论坛 <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><input type="text" class="form-control" placeholder="搜索你想要的信息"></li>
+                            <li><button type="submit" class="btn btn-default">搜索</button></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="tree well">
+    <ul>
+	<li class="parent_li" style="display: list-item">
+        <span title="折叠此级">
+            <i class="glyphicon glyphicon-folder-open glyphicon-minus-sign"></i>
+            商贸版
+        </span>
+	<ul>
+        {% recursetree nodes %}
+        {% if node.is_leaf_node %}
+		    <li class="parent_li" style="display: none">
+                <span title="折叠此级">
+                    <i class="glyphicon glyphicon-minus-sign"></i>
+                    {{ node.name }}
+                </span>
+            </li>
+        {% else %}
+			<li class="parent_li" style="display:none">
+                <span title="折叠此级">
+                    <i class="glyphicon glyphicon-minus-sign"></i>
+                    {{ node.name }}
+                </span>
+			    <ul>
+                    {{ children }}
+                </ul>
+            </li>
+        {% endif %}
+    {% endrecursetree %}
+    </ul>
+</ul>
+    </div>
+{% endblock %}
+</body>
+</html>
