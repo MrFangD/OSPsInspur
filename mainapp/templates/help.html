@@ -26,6 +26,17 @@
                 });
             });
         </script>
+        <script type="text/javascript">
+                $(function(){
+                    $('span').click(function (e) {
+                        var nodeid = $(e.target).attr('id');
+                        $.get("{% url "helpresult" %}", {'nodeid': nodeid}, function(ret){
+                            $('.results').html('');
+                            $('.results').append(ret);
+                        });
+                         });
+                });
+        </script>
     {% endblock %}
     <title>帮助</title>
 </head>
@@ -57,10 +68,11 @@
             </div>
         </div>
     </nav>
-    <div class="tree well">
+        <div class="row">
+<div class="tree well col-md-3" style="overflow-x:auto; width:300px;">
     <ul>
 	<li class="parent_li" style="display: list-item">
-        <span title="折叠此级">
+        <span title="折叠此级" tabindex="0" >
             <i class="glyphicon glyphicon-folder-open glyphicon-minus-sign"></i>
             商贸版
         </span>
@@ -68,14 +80,14 @@
         {% recursetree nodes %}
         {% if node.is_leaf_node %}
 		    <li class="parent_li" style="display: none">
-                <span title="折叠此级">
+                <span title="折叠此级" id="{{ node.id }}" tabindex="0">
                     <i class="glyphicon glyphicon-minus-sign"></i>
                     {{ node.name }}
                 </span>
             </li>
         {% else %}
 			<li class="parent_li" style="display:none">
-                <span title="折叠此级">
+                <span title="折叠此级" id="{{ node.id }}" tabindex="0">
                     <i class="glyphicon glyphicon-minus-sign"></i>
                     {{ node.name }}
                 </span>
@@ -87,6 +99,10 @@
     {% endrecursetree %}
     </ul>
 </ul>
+    </div>
+        <div class="col-md-9 results" style="top: 30px;">
+
+        </div>
     </div>
 {% endblock %}
 </body>
