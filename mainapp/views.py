@@ -1,9 +1,11 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render_to_response
+from django.http import JsonResponse
+import json
 
 
 def index(request):
@@ -11,8 +13,7 @@ def index(request):
 
 
 def login(request):
-    nodes = models.Area.objects.all()
-    return render(request, "login.html", {'nodes': nodes})
+    return render(request, "login.html")
 
 
 def register(request):
@@ -22,3 +23,13 @@ def register(request):
 def help(request):
     nodes = models.Area.objects.all()
     return render(request, 'help.html', {'nodes': nodes})
+
+
+def helpresult(request):
+    nodeid = request.GET.get('nodeid')
+    try:
+        helpcon = models.Area.objects.get(id=nodeid).community
+    except:
+        helpcon = ''
+
+    return HttpResponse(helpcon)
