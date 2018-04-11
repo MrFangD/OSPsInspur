@@ -19,5 +19,5 @@ import xadmin
 
 urlpatterns = [
         url(r'^xadmin/', xadmin.site.urls),
-    url(r'^ospsinspur/', include('mainapp.mainurl'))
+        url(r'^ospsinspur/', include('mainapp.mainurl'))
 ]
