@@ -13,12 +13,16 @@
         <link href="{% static "css/style.css" %}" rel="stylesheet" />
         <link href="{% static "css/docs.main.css" %}" rel="stylesheet"/>
         <link href="{% static "css/site.main.css" %}" rel="stylesheet"/>
+        <link href="{% static "css/tree.css" %}" rel="stylesheet"/>
         <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+        {% block js %}
+        {% endblock %}
         <style>
             .bs-docs-footer{
                 margin-top: 0px;
