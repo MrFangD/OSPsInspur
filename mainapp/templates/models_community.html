@@ -1,0 +1,136 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ospsinspur</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet">
+        <link href="{% static "css/bootstrap.css"  %}" rel="stylesheet" />
+        <link href="{% static "css/font-awesome.css" %}" rel="stylesheet" />
+        <link href="{% static "css/style.css" %}" rel="stylesheet" />
+        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+    </head>
+<body class="home-template">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="">
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OSPsInspur</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="{% url 'index' %}">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品分类<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">PS专业版</a></li>
+                        <li><a href="#">PS商贸版</a></li>
+                        <li><a href="#">PS标准版</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">PSCloud</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                <div class="col-md-3">
+                    <ul class="list-group">
+                        <li class="list-group-item"  style="text-align: center">
+                            <img src="#" />
+                        </li>
+                        <li class="list-group-item" style="text-align: center">
+                            <strong>用户名</strong>
+                        </li>
+                    </ul>
+                    <br/>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>主要分类</strong>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">104</span>
+                            Technology
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">34</span>
+                            Blogging
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">10</span>
+                            Information
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">50</span>
+                            Security
+                        </li>
+                        <li class="list-group-item">
+                            <strong>其他分类</strong>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">104</span>
+                            Technology
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">34</span>
+                            Blogging
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">10</span>
+                            Information
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">50</span>
+                            Security
+                        </li>
+                    </ul>
+                    <br />
+                    <div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">订阅更新</h3>
+                            </div>
+                            <div class="panel-body">
+                                <input type="text" class="form-control" placeholder="Your Email" />
+                                <hr />
+                                <a href="#" class="btn btn-info btn-sm btn-block">subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
