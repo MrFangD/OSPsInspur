@@ -29,10 +29,10 @@
         <script type="text/javascript">
                 $(function(){
                     $('span').click(function (e) {
-                        var nodeid = $(e.target).attr('id');
+                        var nodeid = $(e.target).attr('id'); //获取节点ID
                         $.get("{% url "helpresult" %}", {'nodeid': nodeid}, function(ret){
-                            $('.results').html('');
-                            $('.results').append(ret);
+                            $('.results').html(''); //清空当前标签下的内容
+                            $('.results').append(ret); //渲染后台数据到当前div下
                         });
                          });
                 });
@@ -53,9 +53,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li ><a href="{% url 'index' %}">首页 <span class="sr-only">(current)</span></a></li>
-                    <li ><a href="#">帮助 <span class="sr-only">(current)</span></a></li>
+                    <li ><a href="{% url 'help' %}">帮助 <span class="sr-only">(current)</span></a></li>
                     <li ><a href="#">课程 <span class="sr-only">(current)</span></a></li>
-                    <li ><a href="#">论坛 <span class="sr-only">(current)</span></a></li>
+                    <li ><a href="{% url 'community' %}">论坛 <span class="sr-only">(current)</span></a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
@@ -69,10 +69,10 @@
         </div>
     </nav>
         <div class="row">
-<div class="tree well col-md-3" style="overflow-x:auto; width:300px;">
+<div class="tree well col-md-3" style="overflow-x:auto; width:300px;height:500px;overflow-y:auto;">
     <ul>
 	<li class="parent_li" style="display: list-item">
-        <span title="折叠此级" tabindex="0" >
+        <span title="折叠此级" >
             <i class="glyphicon glyphicon-folder-open glyphicon-minus-sign"></i>
             商贸版
         </span>
@@ -100,7 +100,7 @@
     </ul>
 </ul>
     </div>
-        <div class="col-md-9 results" style="top: 30px;">
+        <div class="col-md-9 results" style="top: 30px;height:510px;overflow-y:auto;">
 
         </div>
     </div>
