@@ -17,6 +17,13 @@
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script type="text/javascript">
+            $('.myTabs a').click(function (e) {
+                alert('1');
+                e.preventDefault();
+                $(this).tab('show');
+            })
+        </script>
     </head>
 <body class="home-template">
     <nav class="navbar navbar-inverse">
@@ -31,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">OSPsInspur</a>
+                <a class="navbar-brand" href="#">XX版论坛</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -50,11 +57,11 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-search" title="搜索"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bell" title="通知"></span></a></li>
                 <li ><a href="#">登录</a></li>
                 <li><a href="#">注册</a></li>
             </ul>
-                </li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -62,62 +69,81 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
+                    <ul class="nav nav-tabs navbar-right myTabs">
+                        <li class="active"><a href="#">最新</a></li>
+                        <li><a href="#">推荐</a></li>
+                        <li ><a href="#">热门</a></li>
+                        <li><a href="#">待回复</a></li>
+                    </ul>
+                    <div class="aw-comment-list blog-main">
+                        <div class="heading-blog">
+                            <a href="#">主题</a>
+                        </div>
+                        <div class="">
+                            <span class="text-color-999">板块-</span>
+                            <span class="text-color-999">发布人-</span>
+                            <span class="text-color-999">发布时间-</span>
+                            <span class="text-color-999">浏览:999</span>
+                            <span class="text-color-999">回复:999</span>
+                        </div>
+                    </div>
                     {% block content %}
                     {% endblock %}
                 </div>
                 <div class="col-md-3">
-                    <ul class="list-group">
+                    <!--<ul class="list-group">
                         <li class="list-group-item"  style="text-align: center">
                             <img src="#" />
                         </li>
                         <li class="list-group-item" style="text-align: center">
                             <strong>用户名</strong>
                         </li>
+                    </ul>-->
+                    <ul class="list-group">
+                          <li class="list-group-item" style="text-align: center">
+                            <a href="#"><strong>新主题</strong></a>
+                        </li>
                     </ul>
-                    <br/>
+
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <strong>主要分类</strong>
+                            <strong>板块分类</strong>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">104</span>
-                            Technology
+                            技术
                         </li>
                         <li class="list-group-item">
                             <span class="badge">34</span>
-                            Blogging
+                            培训
                         </li>
                         <li class="list-group-item">
                             <span class="badge">10</span>
-                            Information
+                            其他
                         </li>
                         <li class="list-group-item">
-                            <span class="badge">50</span>
-                            Security
-                        </li>
-                        <li class="list-group-item">
-                            <strong>其他分类</strong>
+                            <strong>热门主题</strong>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">104</span>
-                            Technology
+                            主题一
                         </li>
                         <li class="list-group-item">
                             <span class="badge">34</span>
-                            Blogging
+                            主题二
                         </li>
                         <li class="list-group-item">
                             <span class="badge">10</span>
-                            Information
+                            主题三
                         </li>
                         <li class="list-group-item">
                             <span class="badge">50</span>
-                            Security
+                            主题四
                         </li>
                     </ul>
                     <br />
                     <div>
-                        <div class="panel panel-default">
+                        <!--<div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">订阅更新</h3>
                             </div>
@@ -125,7 +151,7 @@
                                 <input type="text" class="form-control" placeholder="Your Email" />
                                 <hr />
                                 <a href="#" class="btn btn-info btn-sm btn-block">subscribe</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
