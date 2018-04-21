@@ -9,9 +9,6 @@
         <link href="{% static "css/bootstrap.css"  %}" rel="stylesheet" />
         <link href="{% static "css/font-awesome.css" %}" rel="stylesheet" />
         <link href="{% static "css/style.css" %}" rel="stylesheet" />
-        <link href="{% static "css/docs.main.css" %}" rel="stylesheet"/>
-        <link href="{% static "css/site.main.css" %}" rel="stylesheet"/>
-        <link href="{% static "css/tree.css" %}" rel="stylesheet"/>
         <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -19,7 +16,56 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static "js/bootstrap.min.js" %}"></script>
 </head>
-<body>
+<body class="home-template">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="">
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">XX版论坛</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="{% url 'index' %}">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品分类<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">PS专业版</a></li>
+                        <li><a href="#">PS商贸版</a></li>
+                        <li><a href="#">PS标准版</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">PSCloud</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-search" title="搜索"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bell" title="通知"></span></a></li>
+                <li ><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+        <div class="breadcrumbs">
+        <div class="container">
+            <div class="breadcrumbs-main">
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'community' %}">论坛首页</a></li>
+                    <li class="active">主题发布</li>
+                </ol>
+            </div>
+        </div>
+    </div>
     <form action="" method="post" autocomplete="off">{% csrf_token %}
         <div class="row">
             <div class="col-md-8">
