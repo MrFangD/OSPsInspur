@@ -61,6 +61,14 @@
                 <li><a href="#"><span class="glyphicon glyphicon-bell" title="通知"></span></a></li>
                 <li ><a href="#">登录</a></li>
                 <li><a href="#">注册</a></li>
+                 <!--<ul class="list-group">
+                        <li class="list-group-item"  style="text-align: center">
+                            <img src="#" />
+                        </li>
+                        <li class="list-group-item" style="text-align: center">
+                            <strong>用户名</strong>
+                        </li>
+                    </ul>-->
             </ul>
             </div>
         </div>
@@ -75,36 +83,52 @@
                         <li ><a href="#">热门</a></li>
                         <li><a href="#">待回复</a></li>
                     </ul>
+                    {% for content in content %}
                     <div class="aw-comment-list blog-main">
                         <div class="heading-blog">
-                            <a href="#">主题</a>
+                            <a href="{% url "content_detailed" content_id=content.id %}">{{ content.fourm_title }}</a>
                         </div>
                         <div class="">
-                            <span class="text-color-999">板块-</span>
-                            <span class="text-color-999">发布人-</span>
-                            <span class="text-color-999">发布时间-</span>
-                            <span class="text-color-999">浏览:999</span>
+                            <span class="text-color-999">{{ content.fourm_plate }}-</span>
+                            <span class="text-color-999">{{ content.fourm_userid }}-</span>
+                            <span class="text-color-999">{{ content.fourm_time }}-</span>
+                            <span class="text-color-999">浏览:{{ content.fourm_count }}</span>
                             <span class="text-color-999">回复:999</span>
                         </div>
                     </div>
-                    {% block content %}
-                    {% endblock %}
-                </div>
-                <div class="col-md-3">
-                    <!--<ul class="list-group">
-                        <li class="list-group-item"  style="text-align: center">
-                            <img src="#" />
+                    {% endfor %}
+                <nav>
+                    <ul class="pagination">
+                        <li class="disabled">
+                            {% if content.has_previous %}
+                                <a href="?page={{ content.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            {% endif %}
                         </li>
-                        <li class="list-group-item" style="text-align: center">
-                            <strong>用户名</strong>
-                        </li>
-                    </ul>-->
-                    <ul class="list-group">
-                          <li class="list-group-item" style="text-align: center">
-                            <a href="#"><strong>新主题</strong></a>
+                        {% for pg in content.paginator.page_range %}
+                            {% if content.number == pg %}
+                                <li class="active"><a href="?page={{ pg }}">{{ pg }}</a> </li>
+                            {% else %}
+                                <li><a href="?page={{ pg }}">{{ pg }}</a> </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li>
+                            {% if content.has_next %}
+                                <a href="?page={{ content.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            {% endif %}
                         </li>
                     </ul>
-
+                </nav>
+                </div>
+                <div class="col-md-3">
+                    <ul class="list-group">
+                          <li class="list-group-item" style="text-align: center">
+                            <a href="{% url 'content' %}"><strong>新主题</strong></a>
+                        </li>
+                    </ul>
                     <ul class="list-group">
                         <li class="list-group-item">
                             <strong>板块分类</strong>
